@@ -35,3 +35,15 @@
     (iterate inc %)))
 
 (true? (prob34 sol34))
+
+(defn prob42 [answer]
+  (and
+    (= (answer 1) 1)
+    (= (answer 3) 6)
+    (= (answer 5) 120)
+    (= (answer 8) 40320)))
+
+(def sol42
+  #(apply * (range 1 (inc %))))
+
+(true? (prob42 sol42))
