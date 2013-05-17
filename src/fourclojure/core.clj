@@ -10,7 +10,7 @@
 (def sol32
   #(interleave % %))
 
-(true? (prob32 sol32))
+; (true? (prob32 sol32))
 
 (defn prob156 [answer]
   (and
@@ -21,7 +21,7 @@
 (def sol156
   #(into {} (map vector %2 (repeat %))))
 
-(true? (prob156 sol156))
+; (true? (prob156 sol156))
 
 (defn prob34 [answer]
   (and
@@ -33,7 +33,7 @@
   #(take (- %2 %)
     (iterate inc %)))
 
-(true? (prob34 sol34))
+; (true? (prob34 sol34))
 
 (defn prob42 [answer]
   (and
@@ -45,7 +45,7 @@
 (def sol42
   #(apply * (range 1 (inc %))))
 
-(true? (prob42 sol42))
+; (true? (prob42 sol42))
 
 (defn prob33 [answer]
   (and
@@ -59,7 +59,7 @@
   (fn [xs n]
     (reduce concat (map (partial repeat n) xs))))
 
-(true? (prob33 sol33))
+; (true? (prob33 sol33))
 
 (defn prob27 [answer]
   (and
@@ -72,7 +72,7 @@
 (def sol27
   #(= (seq %) (reverse %)))
 
-(true? (prob27 sol27))
+; (true? (prob27 sol27))
 
 (defn prob40 [answer]
   (and
@@ -83,4 +83,16 @@
 (def sol40
   #(rest (interleave (repeat %) %2)))
 
-(true? (prob40 sol40))
+; (true? (prob40 sol40))
+
+(def is-4clojure #(re-find #"(prob|sol)(\d+)" (str %)))
+
+(def by-num
+  (group-by #(re-find #"\d+" (str %))
+            (sort-by str
+                     (filter is-4clojure
+                             (vals (ns-publics 'fourclojure.core))))))
+(every? true?
+        (for [[k v] by-num
+              :let [[t s] v]]
+          (t s)))
