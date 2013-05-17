@@ -73,3 +73,14 @@
   #(= (seq %) (reverse %)))
 
 (true? (prob27 sol27))
+
+(defn prob40 [answer]
+  (and
+    (= (answer 0 [1 2 3]) [1 0 2 0 3])
+    (= (apply str (answer ", " ["one" "two" "three"])) "one, two, three")
+    (= (answer :z [:a :b :c :d]) [:a :z :b :z :c :z :d])))
+
+(def sol40
+  #(rest (interleave (repeat %) %2)))
+
+(true? (prob40 sol40))
