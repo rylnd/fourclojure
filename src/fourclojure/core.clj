@@ -23,7 +23,6 @@
 
 (true? (prob156 sol156))
 
-
 (defn prob34 [answer]
   (and
     (= (answer 1 4) '(1 2 3))
@@ -47,3 +46,30 @@
   #(apply * (range 1 (inc %))))
 
 (true? (prob42 sol42))
+
+(defn prob33 [answer]
+  (and
+    (= (answer [1 2 3] 2) '(1 1 2 2 3 3))
+    (= (answer [:a :b] 4) '(:a :a :a :a :b :b :b :b))
+    (= (answer [4 5 6] 1) '(4 5 6))
+    (= (answer [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
+    (= (answer [44 33] 2) [44 44 33 33])))
+
+(def sol33
+  (fn [xs n]
+    (reduce concat (map (partial repeat n) xs))))
+
+(true? (prob33 sol33))
+
+(defn prob27 [answer]
+  (and
+    (false? (answer '(1 2 3 4 5)))
+    (true? (answer "racecar"))
+    (true? (answer [:foo :bar :foo]))
+    (true? (answer '(1 1 3 3 1 1)))
+    (false? (answer '(:a :b :c)))))
+
+(def sol27
+  #(= (seq %) (reverse %)))
+
+(true? (prob27 sol27))
