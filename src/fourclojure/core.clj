@@ -71,6 +71,15 @@
 (def sol40
   #(rest (interleave (repeat %) %2)))
 
+(defn prob31 [answer]
+  (and
+    (= (answer [1 1 2 1 1 1 3 3]) '((1 1) (2) (1 1 1) (3 3)))
+    (= (answer [:a :a :b :b :c]) '((:a :a) (:b :b) (:c)))
+    (= (answer [[1 2] [1 2] [3 4]]) '(([1 2] [1 2]) ([3 4])))))
+
+(def sol31
+  #(partition-by identity %))
+
 (def is-4clojure #(re-find #"(prob|sol)(\d+)" (str %)))
 
 (def by-num
