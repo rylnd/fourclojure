@@ -10,8 +10,6 @@
 (def sol32
   #(interleave % %))
 
-; (true? (prob32 sol32))
-
 (defn prob156 [answer]
   (and
     (= (answer 0 [:a :b :c]) {:a 0 :b 0 :c 0})
@@ -20,8 +18,6 @@
 
 (def sol156
   #(into {} (map vector %2 (repeat %))))
-
-; (true? (prob156 sol156))
 
 (defn prob34 [answer]
   (and
@@ -33,8 +29,6 @@
   #(take (- %2 %)
     (iterate inc %)))
 
-; (true? (prob34 sol34))
-
 (defn prob42 [answer]
   (and
     (= (answer 1) 1)
@@ -44,8 +38,6 @@
 
 (def sol42
   #(apply * (range 1 (inc %))))
-
-; (true? (prob42 sol42))
 
 (defn prob33 [answer]
   (and
@@ -59,8 +51,6 @@
   (fn [xs n]
     (reduce concat (map (partial repeat n) xs))))
 
-; (true? (prob33 sol33))
-
 (defn prob27 [answer]
   (and
     (false? (answer '(1 2 3 4 5)))
@@ -72,8 +62,6 @@
 (def sol27
   #(= (seq %) (reverse %)))
 
-; (true? (prob27 sol27))
-
 (defn prob40 [answer]
   (and
     (= (answer 0 [1 2 3]) [1 0 2 0 3])
@@ -82,8 +70,6 @@
 
 (def sol40
   #(rest (interleave (repeat %) %2)))
-
-; (true? (prob40 sol40))
 
 (def is-4clojure #(re-find #"(prob|sol)(\d+)" (str %)))
 
