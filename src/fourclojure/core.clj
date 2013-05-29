@@ -80,6 +80,21 @@
 (def sol31
   #(partition-by identity %))
 
+(defn prob41 [answer]
+  (and
+    (= (answer [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])
+    (= (answer [:a :b :c :d :e :f] 2) [:a :c :e])
+    (= (answer [1 2 3 4 5 6] 4) [1 2 3 5 6])))
+
+; whoops, this is really drop-nth, not drop-every-nth
+; (def sol41
+;   (fn [coll n]
+;     (keep-indexed #(when (not= % (dec n)) %2) coll)))
+
+(def sol41
+  #(mapcat drop-last
+           (partition %2 %2 [nil] %)))
+
 (def is-4clojure #(re-find #"(prob|sol)(\d+)" (str %)))
 
 (def by-num
