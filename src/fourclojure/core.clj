@@ -95,6 +95,15 @@
   #(mapcat drop-last
            (partition %2 %2 [nil] %)))
 
+(defn prob49 [answer]
+  (and
+    (= (answer 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])
+    (= (answer 1 [:a :b :c :d]) [[:a] [:b :c :d]])
+    (= (answer 2 [[1 2] [3 4] [5 6]]) [[[1 2] [3 4]] [[5 6]]])))
+
+(def sol49
+  (juxt take drop))
+
 (def is-4clojure #(re-find #"(prob|sol)(\d+)" (str %)))
 
 (def by-num
